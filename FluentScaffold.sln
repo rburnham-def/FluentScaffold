@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentScaffold.EntityFrameworkCore", "FluentScaffold.EntityFrameworkCore\FluentScaffold.EntityFrameworkCore.csproj", "{DE392251-0100-4E3B-8FBA-D50BC4E89B28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentScaffold.Core", "FluentScaffold.Core\FluentScaffold.Core.csproj", "{EAD7C313-2414-48ED-A88B-C87FEE3F76C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentScaffold.Tests", "FluentScaffold.Tests\FluentScaffold.Tests.csproj", "{8AD731C9-846A-484A-851A-7AE35E2645FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE392251-0100-4E3B-8FBA-D50BC4E89B28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE392251-0100-4E3B-8FBA-D50BC4E89B28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE392251-0100-4E3B-8FBA-D50BC4E89B28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE392251-0100-4E3B-8FBA-D50BC4E89B28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAD7C313-2414-48ED-A88B-C87FEE3F76C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAD7C313-2414-48ED-A88B-C87FEE3F76C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAD7C313-2414-48ED-A88B-C87FEE3F76C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAD7C313-2414-48ED-A88B-C87FEE3F76C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AD731C9-846A-484A-851A-7AE35E2645FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AD731C9-846A-484A-851A-7AE35E2645FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AD731C9-846A-484A-851A-7AE35E2645FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AD731C9-846A-484A-851A-7AE35E2645FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
