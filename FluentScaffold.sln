@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentScaffold.Core", "Flue
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentScaffold.Tests", "FluentScaffold.Tests\FluentScaffold.Tests.csproj", "{8AD731C9-846A-484A-851A-7AE35E2645FE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentScaffold.Autofac", "FluentScaffold.Autofac\FluentScaffold.Autofac.csproj", "{7ED3ACDF-AF75-4B03-8554-61C051097281}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{8AD731C9-846A-484A-851A-7AE35E2645FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AD731C9-846A-484A-851A-7AE35E2645FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AD731C9-846A-484A-851A-7AE35E2645FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7ED3ACDF-AF75-4B03-8554-61C051097281}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ED3ACDF-AF75-4B03-8554-61C051097281}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ED3ACDF-AF75-4B03-8554-61C051097281}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ED3ACDF-AF75-4B03-8554-61C051097281}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

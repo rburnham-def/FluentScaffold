@@ -17,6 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\FluentScaffold.Autofac\FluentScaffold.Autofac.csproj" />
       <ProjectReference Include="..\FluentScaffold.Core\FluentScaffold.Core.csproj" />
       <ProjectReference Include="..\FluentScaffold.EntityFrameworkCore\FluentScaffold.EntityFrameworkCore.csproj" />
     </ItemGroup>

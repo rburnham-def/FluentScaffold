@@ -12,42 +12,38 @@ namespace FluentScaffold.Tests;
 [TestFixture]
 public class EfBuilderTests
 {
-    private TestDbContext _dbContext;
+    // private TestDbContext _dbContext;
 
-    [SetUp]
-    public void Setup()
-    {
-        var contextOptions = new DbContextOptionsBuilder<TestDbContext>()
-            .UseInMemoryDatabase("TestDbContext")
-            .ConfigureWarnings(b => b.Ignore(InMemoryEventId.TransactionIgnoredWarning))
-            .Options;
-        
-        _dbContext = new TestDbContext(contextOptions);
-        
-
-    }
-
-    [TearDown]
-    public void TearDown()
-    {
-        _dbContext.Dispose();
-    }
+    // [SetUp]
+    // public void Setup()
+    // {
+    //    
+    //
+    // }
+    //
+    // [TearDown]
+    // public void TearDown()
+    // {
+    //     _dbContext.Dispose();
+    // }
 
     [Test]
     public void EFBuilder_Can_Access_User_From_TestScaffolds_DbContext()
     {
+        using var dbContext = TestDbContextFactory.Create();
         var userId = Guid.Parse("65579043-8112-480C-A885-C6157947F0F3");
         new TestScaffold()
-            .BuildDbContext(_dbContext)
+            .WithEfCoreBuilder(dbContext)
             .With(new User(
                 id:userId,
                 email : "Bob@test.com",
                 password: "",
                 name : "Bob", 
                 dateOfBirth: DateOnly.FromDateTime(DateTime.Now.AddYears(-15))
-            ));
+            ))
+            .Build();
 
-        var user = _dbContext.Users.FirstOrDefault(u => u.Id == userId);
+        var user = dbContext.Users.FirstOrDefault(u => u.Id == userId);
         Assert.IsNotNull(user);
         Assert.IsTrue(user?.Id == userId);
     }
@@ -55,9 +51,10 @@ public class EfBuilderTests
     [Test]
     public void EBBuilder_Can_Extend_EfBuilder()
     {   
+        using var dbContext = TestDbContextFactory.Create();
         var userId = Guid.Parse("65579043-8112-480C-A885-C6157947F0F3");
         new TestScaffold()
-            .BuildDbContext(_dbContext)
+            .WithEfCoreBuilder(dbContext)
             .WithDefaultCatalogue()
             .With(new User(
                 id:userId,
@@ -66,11 +63,12 @@ public class EfBuilderTests
                 name : "Bob", 
                 dateOfBirth: DateOnly.FromDateTime(DateTime.Now.AddYears(-15))
             ))
-            .WithShoppingCart(userId);
+            .WithShoppingCart(userId)
+            .Build();
 
-        var user = _dbContext.Users.FirstOrDefault(u => u.Id == userId);
-        var shopping = _dbContext.ShoppingCart.FirstOrDefault(s => s.User.Id == userId);
-        var items = _dbContext.Items.ToList();
+        var user = dbContext.Users.FirstOrDefault(u => u.Id == userId);
+        var shopping = dbContext.ShoppingCart.FirstOrDefault(s => s.User.Id == userId);
+        var items = dbContext.Items.ToList();
         
         Assert.Multiple(() =>
         {

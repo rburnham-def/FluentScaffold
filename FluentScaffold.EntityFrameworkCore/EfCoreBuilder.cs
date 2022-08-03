@@ -15,20 +15,23 @@ public class EfCoreBuilder<TDbContext>: Builder where TDbContext : DbContext
 
     public EfCoreBuilder<TDbContext> With<TEntity>(TEntity entity)
     {
-        if (entity != null)
+        Enqueue(() =>
         {
+            if (entity == null) return;
             _dbContext.Add(entity);
             _dbContext.SaveChanges();
-        }
+        });
 
         return this;
     }
     
     public EfCoreBuilder<TDbContext> WithRange<T>(IEnumerable<T> entities)
     {
-        _dbContext.AddRange((IEnumerable<object>)entities);
-        _dbContext.SaveChanges();
-        
+        Enqueue(() =>
+        {
+            _dbContext.AddRange((IEnumerable<object>)entities);
+            _dbContext.SaveChanges();
+        });
         return this;
     }
 }
