@@ -5,7 +5,7 @@ namespace FluentScaffold.Core;
 
 public static class TestScaffoldExtensions  
 {
-    public static AutofacBuilder WithAutofacBuilder(this TestScaffold testScaffold)
+    public static AutofacBuilder AutofacBuilder(this TestScaffold testScaffold)
     {
         testScaffold.BuildServiceProvider();
         return new AutofacBuilder(testScaffold);

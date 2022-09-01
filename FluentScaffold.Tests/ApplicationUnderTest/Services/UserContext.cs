@@ -5,12 +5,13 @@ namespace FluentScaffold.Tests.ApplicationUnderTest.Services;
 //Mock Authenticated User Context
 public class UserContext: IUserContext
 {
-    private readonly User _user;
-
-    public UserContext(User user)
+    private readonly User? _user;
+    
+    public UserContext(IAuthService authService, string email, string password)
     {
-        _user = user;
+        _user = authService.AuthenticateUser(email, password);
     }
+
     public User GetAuthenticatedUser()
     {
         return _user;

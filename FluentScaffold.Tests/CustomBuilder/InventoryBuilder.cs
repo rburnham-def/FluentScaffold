@@ -27,13 +27,13 @@ public static class InventoryBuilderExtensions
     /// Adds a set of sample Items to the DBContext
     /// </summary>
     public static EfCoreBuilder<TDbContext> WithDefaultCatalogue<TDbContext>(
-        this EfCoreBuilder<TDbContext> builder) where TDbContext: DbContext
+        this EfCoreBuilder<TDbContext> builder, Guid matchedId) where TDbContext: DbContext
     {
         builder.WithRange(new List<Item>()
         {
             new() { Id = Guid.NewGuid(), Title = "Minions", Price = 21},
             new() { Id = Guid.NewGuid(), Title = "Avengers", Price = 24},
-            new() { Id = Guid.NewGuid(), Title = "Minions", Price = 14, AgeRestriction = 15}
+            new() { Id = matchedId, Title = "Dead Pool", Price = 14, AgeRestriction = 15}
         });
         
         return builder;

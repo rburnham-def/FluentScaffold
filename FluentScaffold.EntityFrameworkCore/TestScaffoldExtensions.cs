@@ -7,9 +7,9 @@ namespace FluentScaffold.Core;
 
 public static class TestScaffoldExtensions  
 {
-    public static EfCoreBuilder<T> WithEfCoreBuilder<T>(this TestScaffold testScaffold, T dbContext) where T: DbContext
+    public static EfCoreBuilder<T> EfCoreBuilder<T>(this TestScaffold testScaffold, T dbContext) where T: DbContext
     {
-        testScaffold.AddSingleton(_ => dbContext);
+        testScaffold.ServiceCollection.AddSingleton(_ => dbContext);
         testScaffold.BuildServiceProvider();
 
         return new EfCoreBuilder<T>(testScaffold);

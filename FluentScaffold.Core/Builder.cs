@@ -1,15 +1,19 @@
 namespace FluentScaffold.Core;
 
-public class Builder: IBuilder
+public class Builder
 {
     private readonly TestScaffold _testScaffold;
-    protected readonly Queue<Action> _buildActions = new Queue<Action>();
+    private readonly Queue<Action> _buildActions = new();
 
     protected Builder(TestScaffold testScaffold)
     {
         _testScaffold = testScaffold;
     }
 
+    /// <summary>
+    /// Enqueue an action to be applied when Build is called. 
+    /// </summary>
+    /// <param name="action"></param>
     protected void Enqueue(Action action)
     {
         _buildActions.Enqueue(action);
@@ -19,7 +23,7 @@ public class Builder: IBuilder
     /// Build the current builder actions and return the TestScaffold context. 
     /// </summary>
     /// <returns></returns>
-    public TestScaffold Build()
+    public virtual TestScaffold Build()
     {
         while (_buildActions.Any())
         {
@@ -29,8 +33,4 @@ public class Builder: IBuilder
 
         return _testScaffold;
     }
-}
-
-public interface IBuilder
-{
 }
