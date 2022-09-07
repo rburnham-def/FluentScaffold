@@ -1,6 +1,4 @@
-﻿using System.Collections.Immutable;
-using System.Reflection;
-using Autofac;
+﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using FluentScaffold.Core;
 
@@ -66,13 +64,7 @@ public class AutofacBuilder: Builder
         Enqueue(() => _containerBuilder.RegisterType<T>().SingleInstance().As<TInterface>().InstancePerLifetimeScope());
         return this;
     }
-    
-    public AutofacBuilder WithSingleton<T>(T service) where T : class
-    {
-        Enqueue(() => _containerBuilder.RegisterInstance(service).SingleInstance().InstancePerLifetimeScope());
-        return this;
-    }
-    
+
     public AutofacBuilder WithSingletonAs<T, TInterface>(T service) where T : class where TInterface : notnull
     {
         Enqueue(() => _containerBuilder.RegisterInstance(service).As<TInterface>().SingleInstance());
@@ -89,6 +81,7 @@ public class AutofacBuilder: Builder
         var serviceProvider = new AutofacServiceProvider(container);
         
         testScaffold.SetServiceProvider(serviceProvider);
+        
         return testScaffold;
     }
 }

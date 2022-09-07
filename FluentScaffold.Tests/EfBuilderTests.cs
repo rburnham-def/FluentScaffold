@@ -35,7 +35,7 @@ public class EfBuilderTests
     public void EBBuilder_Can_Extend_EfBuilder()
     {   
         using var dbContext = TestDbContextFactory.Create();
-        var userId = Guid.Parse("65579043-8112-480C-A885-C6157947F0F3");
+        var userId = Guid.Parse("36A6736A-F8AC-4FA2-B33E-0ACB14776C0F");
         new TestScaffold()
             .EfCoreBuilder(dbContext)
             .WithDefaultCatalogue(Guid.NewGuid())

@@ -10,8 +10,6 @@ using NUnit.Framework;
 
 namespace FluentScaffold.Tests;
 
-
-
 [TestFixture]
 public class IntegrationTest
 {
@@ -33,7 +31,7 @@ public class IntegrationTest
         var password = "SupperSecretPa$$word";
         
         // Arrange
-        var userId = Guid.Parse("65579043-8112-480C-A885-C6157947F0F3");
+        var userId = Guid.Parse("A5A743C3-A02F-4CA3-94F8-B0ECAF4A6345");
         var itemId = Guid.Parse("7ED3A7D5-8A69-485E-87E5-AE0D9E1BB470");
         var testScaffold = new TestScaffold()
             .EfCoreBuilder(dbContext)
