@@ -20,8 +20,8 @@ public class AutofacBuilderTests
             .Build();
 
 
-        var timeService1 = testScaffold.ServiceProvider?.GetService<ITimeService>();
-        var timeService2 = testScaffold.ServiceProvider?.GetService<ITimeService>();
+        var timeService1 = testScaffold.Resolve<ITimeService>();
+        var timeService2 = testScaffold.Resolve<ITimeService>();
 
         Assert.Multiple(() =>
         {
@@ -43,8 +43,8 @@ public class AutofacBuilderTests
             .Build();
 
 
-        var timeService1 = testScaffold.ServiceProvider?.GetService<TimeService>();
-        var timeService2 = testScaffold.ServiceProvider?.GetService<TimeService>();
+        var timeService1 = testScaffold.Resolve<TimeService>();
+        var timeService2 = testScaffold.Resolve<TimeService>();
 
         Assert.Multiple(() =>
         {
@@ -67,8 +67,8 @@ public class AutofacBuilderTests
             .Build();
 
 
-        var timeService1 = testScaffold.ServiceProvider?.GetService<ITimeService>();
-        var timeService2 = testScaffold.ServiceProvider?.GetService<ITimeService>();
+        var timeService1 = testScaffold.Resolve<ITimeService>();
+        var timeService2 = testScaffold.Resolve<ITimeService>();
 
         Assert.Multiple(() =>
         {
@@ -91,7 +91,7 @@ public class AutofacBuilderTests
             .Build();
 
 
-        var timeService1 = testScaffold.ServiceProvider?.GetService<TimeService>();
+        var timeService1 = testScaffold.Resolve<TimeService>();
 
         Assert.Multiple(() =>
         {
@@ -113,7 +113,7 @@ public class AutofacBuilderTests
             .Build();
 
 
-        var timeService1 = testScaffold.ServiceProvider?.GetService<ITimeService>();
+        var timeService1 = testScaffold.Resolve<ITimeService>();
 
         Assert.Multiple(() =>
         {
@@ -135,8 +135,8 @@ public class AutofacBuilderTests
             .Build();
 
 
-        var timeService1 = testScaffold.ServiceProvider?.GetService<TimeService>();
-        var timeService2 = testScaffold.ServiceProvider?.GetService<TimeService>();
+        var timeService1 = testScaffold.Resolve<TimeService>();
+        var timeService2 = testScaffold.Resolve<TimeService>();
 
         Assert.Multiple(() =>
         {
@@ -159,8 +159,8 @@ public class AutofacBuilderTests
             .Build();
 
 
-        var timeService1 = testScaffold.ServiceProvider?.GetService<ITimeService>();
-        var timeService2 = testScaffold.ServiceProvider?.GetService<ITimeService>();
+        var timeService1 = testScaffold.Resolve<ITimeService>();
+        var timeService2 = testScaffold.Resolve<ITimeService>();
 
         Assert.Multiple(() =>
         {
@@ -183,7 +183,7 @@ public class AutofacBuilderTests
             .Build();
 
 
-        var timeService1 = testScaffold.ServiceProvider?.GetService<ITimeService>();
+        var timeService1 = testScaffold.Resolve<ITimeService>();
 
         Assert.Multiple(() =>
         {

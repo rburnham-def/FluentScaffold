@@ -2,9 +2,9 @@ using System;
 using System.Linq;
 using Autofac;
 using FluentScaffold.Core;
+using FluentScaffold.Tests.ApplicationUnderTest;
 using FluentScaffold.Tests.ApplicationUnderTest.Data;
 using FluentScaffold.Tests.ApplicationUnderTest.Services;
-using FluentScaffold.Tests.CustomBuilder;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 
@@ -32,10 +32,9 @@ public class IntegrationTest
         
         // Arrange
         var userId = Guid.Parse("A5A743C3-A02F-4CA3-94F8-B0ECAF4A6345");
-        var itemId = Guid.Parse("7ED3A7D5-8A69-485E-87E5-AE0D9E1BB470");
         var testScaffold = new TestScaffold()
             .EfCoreBuilder(dbContext)
-            .WithDefaultCatalogue(itemId)
+            .WithDefaultCatalogue()
             .With(new User(
                 id: userId,
                 email: email,
@@ -58,15 +57,18 @@ public class IntegrationTest
             )
             .WithType<ShoppingCartService>()
             .Build();
-        
+
+        var item = dbContext.Items.FirstOrDefault(i => i.Title == Defaults.CatalogueItems.DeadPool);
+
         
 
         // Act
         var shoppingCartService = testScaffold.Resolve<ShoppingCartService>();
-        shoppingCartService.AddItemToCart(itemId);
+        shoppingCartService.AddItemToCart(item!.Id);
 
         // Assert 
+        
         var cart = dbContext.ShoppingCart.Include(s => s.Inventory).FirstOrDefault(u => u.UserId == userId);
-        Assert.IsTrue(cart?.Inventory.Any(i => i.Id == itemId));
+        Assert.IsTrue(cart?.Inventory.Any(i => i.Id == item.Id));
     }
 }

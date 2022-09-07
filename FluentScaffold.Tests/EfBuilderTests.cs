@@ -2,8 +2,8 @@ using System;
 using System.Linq;
 using NUnit.Framework;
 using FluentScaffold.Core;
+using FluentScaffold.Tests.ApplicationUnderTest;
 using FluentScaffold.Tests.ApplicationUnderTest.Data;
-using FluentScaffold.Tests.CustomBuilder;
 
 namespace FluentScaffold.Tests;
 
@@ -38,7 +38,7 @@ public class EfBuilderTests
         var userId = Guid.Parse("36A6736A-F8AC-4FA2-B33E-0ACB14776C0F");
         new TestScaffold()
             .EfCoreBuilder(dbContext)
-            .WithDefaultCatalogue(Guid.NewGuid())
+            .WithDefaultCatalogue()
             .With(new User(
                 id:userId,
                 email : "Bob@test.com",
@@ -57,13 +57,53 @@ public class EfBuilderTests
         {
             //User Added to dbContext
             Assert.IsNotNull(user);
-            Assert.IsTrue(user?.Id == userId);
+            Console.WriteLine($"Matched User:{user?.Id}, Expected User: {userId}");
+            Assert.IsTrue(user?.Id == userId, "User not found");
 
             //Shopping Cart Added to DBContext
             Assert.IsNotNull(shopping);
             
             //Default items added to DBContext
-            Assert.IsTrue(items.Count == 3);
+            Assert.IsTrue(items.Count == 3, "Item count did not match");
         });
+    }
+
+    [Test]
+    public void EBBuilder_Throw_Exception_When_Not_Initialized()
+    {
+        Assert.Catch<InvalidOperationException>(() =>
+        {
+            new TestScaffold()
+                .EfCoreBuilder<TestDbContext>()
+                .Build();
+        });
+    }
+    
+    
+    [Test]
+    public void EBBuilder_Can_Defer_Adding_To_DbContext()
+    {
+        using var dbContext = TestDbContextFactory.Create();
+        var testScaffold = new TestScaffold()
+                .EfCoreBuilder(dbContext)
+                .Build();
+
+        testScaffold.EfCoreBuilder<TestDbContext>()
+            .WithDefaultCatalogue()
+            .Build();
+
+        var userId = Guid.NewGuid();
+        testScaffold.EfCoreBuilder<TestDbContext>()
+            .With(new User(userId, "Bob", "bob@test.com", "SuperSecret123", DateOnly.FromDateTime(DateTime.Now.AddYears(-12))))
+            .Build();
+
+        var hasItem = dbContext.Items.Any(i => i.Title == Defaults.CatalogueItems.Avengers);
+        var hasUser = dbContext.Users.Any(i => i.Id == userId);
+        Assert.Multiple(() =>
+        {
+            Assert.IsTrue(hasItem, "DbContext was not seeded with deferred builder");
+            Assert.IsTrue(hasUser, "DbContext was not seeded with second call to deferred builder");
+        });
+
     }
 }

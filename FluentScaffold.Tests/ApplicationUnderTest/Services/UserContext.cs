@@ -7,12 +7,13 @@ public class UserContext: IUserContext
 {
     private readonly User? _user;
     
-    public UserContext(IAuthService authService, string email, string password)
+    public UserContext(IAuthService authService, string? email, string? password)
     {
-        _user = authService.AuthenticateUser(email, password);
+        if (email != null && password != null) 
+            _user = authService.AuthenticateUser(email, password);
     }
 
-    public User GetAuthenticatedUser()
+    public User? GetAuthenticatedUser()
     {
         return _user;
     }

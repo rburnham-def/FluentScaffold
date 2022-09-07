@@ -10,7 +10,12 @@ public class EfCoreBuilder<TDbContext>: Builder where TDbContext : DbContext
 
     public EfCoreBuilder(TestScaffold testScaffold) : base(testScaffold)
     {
-        _dbContext = testScaffold.ServiceProvider.GetRequiredService<TDbContext>();
+        _dbContext = testScaffold.Resolve<TDbContext>();
+    }
+
+    public TDbContext GetDbContext()
+    {
+        return _dbContext;
     }
 
     public EfCoreBuilder<TDbContext> With<TEntity>(TEntity entity)

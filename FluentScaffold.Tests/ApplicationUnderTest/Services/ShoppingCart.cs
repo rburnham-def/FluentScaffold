@@ -34,6 +34,7 @@ public class ShoppingCartService
             };
 
             _dbContext.ShoppingCart.Add(shoppingCart);
+            _dbContext.SaveChanges();
         }
 
         if (item != null)
