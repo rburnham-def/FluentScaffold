@@ -71,6 +71,6 @@ public class ShoppingCartSteps
         var item = dbContext.Items.FirstOrDefault(i => i.Title == Defaults.CatalogueItems.DeadPool);
 
         var cart = dbContext.ShoppingCart.Include(s => s.Inventory).FirstOrDefault(u => u.UserId == userId);
-        Assert.IsTrue(cart?.Inventory.Any(i => i.Id == item.Id));
+        Assert.IsTrue(cart?.Inventory.Any(i => i.Id == item!.Id));
     }
 }
