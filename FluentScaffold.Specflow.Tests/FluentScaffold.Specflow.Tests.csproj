@@ -26,6 +26,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\FluentScaffold.Specflow\FluentScaffold.Specflow.csproj" />
       <ProjectReference Include="..\FluentScaffold.Tests\FluentScaffold.Tests.csproj" />
     </ItemGroup>
 

@@ -122,12 +122,12 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Underaged User is Unable to Purchase Age Restricted Items")]
-        public void UnderagedUserIsUnableToPurchaseAgeRestrictedItems()
+        [NUnit.Framework.DescriptionAttribute("Under aged User is Unable to Purchase Age Restricted Items")]
+        public void UnderAgedUserIsUnableToPurchaseAgeRestrictedItems()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Underaged User is Unable to Purchase Age Restricted Items", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Under aged User is Unable to Purchase Age Restricted Items", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 20
 this.ScenarioInitialize(scenarioInfo);
 #line hidden

@@ -17,7 +17,7 @@ Scenario: Add multiple items to Shopping Cart
 	
 	
 	
-Scenario: Underaged User is Unable to Purchase Age Restricted Items
+Scenario: Under aged User is Unable to Purchase Age Restricted Items
 	Given the Items
 	And I am Authenticated as the User
 	  | Field       | Value        |
